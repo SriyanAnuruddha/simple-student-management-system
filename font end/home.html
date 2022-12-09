@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+            //table data printing function
+            function buildTable(tabledata){
+                    $(".table td").remove();    
+                    var table = document.getElementById('myTable')
+                    for (var i = 0; i < tabledata.length; i++){
+                        var row = `<tr>
+                                        <td>${tabledata[i].StudentId}</td>
+                                        <td>${tabledata[i].FirstName}</td>
+                                        <td>${tabledata[i].LastName}</td>
+                                        <td>${tabledata[i].dob}</td>
+                                        <td>${tabledata[i].email}</td>
+                                        <td>${tabledata[i].center}</td>
+                                        <td>${tabledata[i].semester}</td>
+                                        <td>${tabledata[i].cgpa}</td>
+                                </tr>`
+                        table.innerHTML += row
+                       }
+                    }
+
+        //displat all
+        $(document).ready(function(){
+            $("#showAllBtn").click(function() {
+                $.ajax({
+                    url: 'http://localhost:3000/api/student/',
+                    type: 'get',
+                    contentType: 'application/json',
+                    dataType: "json",
+                    success: function (data, textStatus, jQxhr) {
+
+                    buildTable(data);
+                    
+                  
+                    },
+                    error: function (jqXhr, textStatus, errorThrown) {
+                    console.log(errorThrown);
+                    } });
+            });
+        });
+
+        //display details by name
+        $(document).ready(function(){
+            $("#searchBtn").click(function() {
+                var selectedOption = $('#searchOption').find(":selected").val();
+
+                if(selectedOption=="Name"){
+                    $.ajax({
+                    url: 'http://localhost:3000/api/student/names/'+$('#searchBar').val(),
+                    type: 'get',
+                    contentType: 'application/json',
+                    dataType: "json",
+                    success: function (data, textStatus, jQxhr) {
+                    buildTable(data);                                         
+                    },
+                    error: function (jqXhr, textStatus, errorThrown) {
+                    console.log(errorThrown);
+                    } });
+                }
+                else if(selectedOption=="Center"){
+                    $.ajax({
+                    url: 'http://localhost:3000/api/student/centers/'+$('#searchBar').val(),
+                    type: 'get',
+                    contentType: 'application/json',
+                    dataType: "json",
+                    success: function (data, textStatus, jQxhr) {
+                    buildTable(data);                                         
+                    },
+                    error: function (jqXhr, textStatus, errorThrown) {
+                    console.log(errorThrown);
+                    }});
+                }else if(selectedOption=="Semester"){
+                    $.ajax({
+                    url: 'http://localhost:3000/api/student/semesters/'+$('#searchBar').val(),
+                    type: 'get',
+                    contentType: 'application/json',
+                    dataType: "json",
+                    success: function (data, textStatus, jQxhr) {
+                    buildTable(data);                                         
+                    },
+                    error: function (jqXhr, textStatus, errorThrown) {
+                    console.log(errorThrown);
+                    }});
+                }else if(selectedOption=="CGPA"){
+                    $.ajax({
+                    url: 'http://localhost:3000/api/student/cgpas/'+$('#searchBar').val(),
+                    type: 'get',
+                    contentType: 'application/json',
+                    dataType: "json",
+                    success: function (data, textStatus, jQxhr) {
+                    buildTable(data);                                         
+                    },
+                    error: function (jqXhr, textStatus, errorThrown) {
+                    console.log(errorThrown);
+                    }});
+                }else if(selectedOption=="StudentID"){
+                    $(".table td").remove();  
+                    $.ajax({
+                    url: 'http://localhost:3000/api/student/'+$('#searchBar').val(),
+                    type: 'get',
+                    contentType: 'application/json',
+                    dataType: "json",
+                    success: function (data, textStatus, jQxhr) {
+                        var table = document.getElementById('myTable')
+                        var row = `<tr>
+                                        <td>${data.StudentId}</td>
+                                        <td>${data.FirstName}</td>
+                                        <td>${data.LastName}</td>
+                                        <td>${data.dob}</td>
+                                        <td>${data.email}</td>
+                                        <td>${data.center}</td>
+                                        <td>${data.semester}</td>
+                                        <td>${data.cgpa}</td>
+                                </tr>`
+                        table.innerHTML += row          
+                    },
+                    error: function (jqXhr, textStatus, errorThrown) {
+                    console.log(errorThrown);
+                    }});
+                }
+                
+                
+            });
+        });
+
+        //delete student details
+        $(document).ready(function(){
+            $("#deleteBtn").click(function() {
+                var selectedOption = $('#deleteOption').find(":selected").val();
+
+                if(selectedOption=="StudentID"){
+                    $.ajax({
+                    type: 'DELETE',
+                    url: 'http://localhost:3000/api/student/'+ $('#deleteBar').val(),
+                    success: function (result) {
+                        alert("student record deleted!");
+                    },
+                    error: function (result) {
+                        alert("can't delete");
+                    }
+                    });
+                }
+                else if(selectedOption=="email"){
+                    $.ajax({
+                    type: 'DELETE',
+                    url: 'http://localhost:3000/api/student/emails/'+ $('#deleteBar').val(),
+                    success: function (result) {
+                        alert("student record deleted!");
+                    },
+                    error: function (result) {
+                        alert("can't delete");
+                    }
+                    });
+                }
+               
+                         
+            });
+        });
+
+    </script>
+
+    <title>home</title>
+</head>
+<body>
+    <div class="sidebar">
+        <p class="sideBarBtn">Content</p>
+        <a href="./insert.html" class="sideBarBtn">insert new student</a>
+        <a href="./update.html" class="sideBarBtn">update student details</a>
+    </div>
+    <div class="container1">
+    <div class="headContent">
+        <h1>Student Management System</h1>
+        <br>
+        <input type="text" id="searchBar" placeholder="search..">
+        <select name="searchOption" id="searchOption">
+            <option value="StudentID">StudentID</option>
+            <option value="Name">Name</option>
+            <option value="Center">Center</option>
+            <option value="Semester">Semester</option>
+            <option value="CGPA">CGPA</option>
+        </select>
+        <input type="button" value="search" id="searchBtn">
+    </div>
+
+    <div class="tablewrapper border rounded ">
+        <input type="button" value="show all" id="showAllBtn">
+        <table class="table table-striped  ">
+        <thead class="thead-dark">
+            <tr  class="bg-info">
+                <th class="text-warning">StudentId</th>
+                <th class="text-warning">First Name</th>
+                <th class="text-warning">Last Name</th>
+                <th class="text-warning">Date of birth</th>
+                <th class="text-warning">Email</th>
+                <th class="text-warning">Center</th>
+                <th class="text-warning">Semester</th>
+                <th class="text-warning">CPGA</th>
+            </tr>
+        </thead>
+            <tbody id="myTable">
+            </tbody>
+        </table>
+    </div>
+    <br>
+
+    <div class="footContent">
+        <h3>Delete Student Details</h3>
+        <input type="text" id="deleteBar" placeholder="email/studentID">
+        <select name="deleteOption" id="deleteOption">
+            <option value="StudentID">StudentID</option>
+            <option value="email">Email</option>
+        </select>
+        <input type="button" value="Delete Details" id="deleteBtn">
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="./style3.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        //show student by id
+        function showStudent(){
+            $.ajax({
+            url: 'http://localhost:3000/api/student/' + $('#SId').val(),type: 'get',
+            contentType: 'application/json',
+            dataType: "json",
+            success: function (data, textStatus, jQxhr) {
+                    $("#sid-form2").val(data.StudentId),
+                    $("#Fname-form2").val(data.FirstName),
+                    $("#Lname-form2").val(data.LastName),
+                    $("#dob-form2").val(data.dob),
+                    $("#email-form2").val(data.email),
+                    $("#center-form2").val(data.center),
+                    $("#semester-form2").val(data.semester),
+                    $("#cgpa-form2").val(data.cgpa)
+            },
+            error: function (jqXhr, textStatus, errorThrown) {
+            alert(`Student Id: ${$('#SId').val()} not found`);
+            console.log(errorThrown);
+            }
+            });
+        }
+
+        //update student by id
+        $(document).ready(function(){
+            $("#updateBtn").click(function() {
+                $.ajax({
+                    type: 'PUT',
+                    url: 'http://localhost:3000/api/student/'+ $('#sid-form2').val(),
+                    contentType: 'application/json',
+                    data: JSON.stringify(
+                    {
+                    "StudentId": $("#sid-form2").val(),
+                    "FirstName": $("#Fname-form2").val(),
+                    "LastName": $("#Lname-form2").val(),
+                    "dob": $("#dob-form2").val(),
+                    "email": $("#email-form2").val(),
+                    "center": $("#center-form2").val(),
+                    "semester": $("#semester-form2").val(),
+                    "cgpa": $("#cgpa-form2").val()
+                    }),
+                    success: function (data, textStatus, jQxhr) {
+                    alert("Data updated");
+
+                    },
+                    error: function (xhr, textStatus, error) {
+                    alert("Error");
+                    }
+                    });
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="wrapper">
+     <h1>Update Student Details</h1>   
+    <label for="">Enter StudentID</label>
+    <input type="text" id="SId">
+    <input type="button" value="show student details" onclick="showStudent()">
+    <!-- update student details -->
+    <br>
+    <br>
+    <form action="">
+            <div class="formContent">
+                <label for="sid">Student ID</label>
+                <input type="text" readonly id="sid-form2"><br>
+                <label for="Fname">First Name</label>
+                <input type="text" id="Fname-form2"><br>
+                <label for="Lname">Last Name</label>
+                <input type="text" id="Lname-form2"><br>
+                <label for="dob">Date Of Birth</label>
+                <input type="text" id="dob-form2"><br>
+                <label for="email">Email</label>
+                <input type="text" id="email-form2"><br>
+                <label for="center">Center</label>
+                <select name="center" id="center-form2">
+                    <option value="Colombo">Colombo</option>
+                    <option value="Kandy">Kandy</option>
+                    <option value="Jaffna">Jaffna</option>
+                </select>
+                <br>
+                <label for="semester">Semester</label>
+                <select name="Semester" id="semester-form2">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                </select>
+                <br>
+                <label for="cgpa">cgpa</label>
+                <input type="text" id="cgpa-form2"><br>
+                <input type="button" value="update" id="updateBtn">
+                <input type="reset" value="clear" id="resetBtn">
+                <a id="homeBtn" href="./home.html">HOME</a>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>

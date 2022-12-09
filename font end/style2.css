@@ -1,0 +1,29 @@
+h1{
+    font-size: 40px;
+}
+body{
+    display: flex;
+    justify-content: center;
+}
+.wrapper{
+    text-align: center;
+    background-color: #c0c0c0;
+    width: 80%;
+    height: 80%;
+}
+
+
+form>label{
+    font-size: 30px;
+    margin: 10px;
+}
+form>*{
+
+    font-size: 25px;
+    margin: 10px;
+}
+
+#homeBtn{
+    color: blue;
+    text-decoration: none;
+}

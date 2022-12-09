@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="./style2.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+         $(document).ready(function(){
+            $("#submitBtn").click(function() {
+                $.ajax({
+                    type: 'POST',
+                    url: 'http://localhost:3000/api/student/',
+                    contentType: 'application/json',
+                    data: JSON.stringify(
+                    {
+                    "StudentId": $('#sid').val(),
+                    "FirstName": $("#Fname").val(),
+                    "LastName": $("#Lname").val(),
+                    "dob": $("#dob").val(),
+                    "email": $("#email").val(),
+                    "center": $("#center").val(),
+                    "semester": $("#semester").val(),
+                    "cgpa": $("#cgpa").val()
+                    }),
+                    success: function (data, textStatus, jQxhr) {
+                    alert("Data Inserted");
+                    
+                    },
+                    error: function (xhr, textStatus, error) {
+                    alert("Error");
+                    }
+                    });
+            });
+        });
+
+
+
+    </script>
+</head>
+<body>
+    <div class="wrapper">
+        
+        <h1>Enter Student Details</h1>
+        
+        <form action="">
+            <label for="sid">Student ID</label>
+            <input type="text" id="sid"><br>
+
+            <label for="Fname">First Name</label>
+            <input type="text" id="Fname"><br>
+
+            <label for="Lname">Last Name</label>
+            <input type="text" id="Lname"><br>
+
+            <label for="dob">Date Of Birth</label>
+            <input type="text" id="dob"><br>
+
+            <label for="email">Email</label>
+            <input type="text" id="email"><br>
+
+            <label for="center">Center</label>
+            <select name="center" id="center">
+                <option value="Colombo">Colombo</option>
+                <option value="Kandy">Kandy</option>
+                <option value="Jaffna">Jaffna</option>
+            </select>
+            <br>
+
+            <label for="semester">Semester</label>
+            <select name="Semester" id="semester">
+                <option value="1">1</option>
+                <option value="2">2</option>
+            </select>
+            <br>
+
+            <label for="cgpa">cgpa</label>
+            <input type="text" id="cgpa"><br>
+            <input type="submit" value="submit" id="submitBtn">
+            <input type="reset" value="clear" id="resetBtn">
+            <a id="homeBtn" href="./home.html">HOME</a>
+        </form>
+    </div>
+</body>
+</html>
