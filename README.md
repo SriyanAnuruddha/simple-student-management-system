@@ -6,7 +6,7 @@ students in a convenient, efficient, and simplified manner. The system
 has a REST API to manage the resources in the backend. and provide full CRUD functinality.
 
 
-#Tech Stack
+## Tech Stack ##
 - HTML
 - CSS
 - JS
