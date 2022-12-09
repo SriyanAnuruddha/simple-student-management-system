@@ -17,3 +17,11 @@ has a REST API to manage the resources in the backend. and provide full CRUD fun
 
 #How to run locally
 -you need to have node.js installed
+-next you need to open 'back end' folder 
+-run this command to startup the server side.
+```ruby
+node app.js
+```
+-next open 'front end' folder
+-open home.html
+-enjoy!
