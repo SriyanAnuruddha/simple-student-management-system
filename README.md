@@ -16,15 +16,13 @@ has a REST API to manage the resources in the backend. and provide full CRUD fun
 - Bootstrap
 #
 #
-#
-#
-##How to run locally##
--you need to have node.js installed
--next you need to open 'back end' folder 
--run this command to startup the server side.
+## How to run locally ##
+1 you need to have node.js installed
+2 next you need to open 'back end' folder 
+3 run this command to startup the server side.
 ```ruby
 node app.js
 ```
--next open 'front end' folder
--open home.html
--enjoy!
+4 next open 'front end' folder
+5 open home.html
+6 enjoy!
