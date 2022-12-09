@@ -7,13 +7,13 @@ has a REST API to manage the resources in the backend. and provide full CRUD fun
 
 
 #Tech Stack
--HTML
--CSS
--JS
--AJAX
--JQUERY
--node.js
--Bootstrap
+- HTML
+- CSS
+- JS
+- AJAX
+- JQUERY
+- node.js
+- Bootstrap
 
 #How to run locally
 -you need to have node.js installed
