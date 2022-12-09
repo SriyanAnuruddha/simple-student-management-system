@@ -5,8 +5,9 @@ managing student records. Its friendly WEB UI allow users to handle
 students in a convenient, efficient, and simplified manner. The system
 has a REST API to manage the resources in the backend. and provide full CRUD functinality.
 
+***
 
-## Tech Stack ##
+### Tech Stack ###
 - HTML
 - CSS
 - JS
@@ -14,9 +15,8 @@ has a REST API to manage the resources in the backend. and provide full CRUD fun
 - JQUERY
 - node.js
 - Bootstrap
-#
-#
-## How to run locally ##
+
+### How to run locally ###
 1. you need to have node.js installed
 2. next you need to open 'back end' folder 
 3. run this command to startup the server side.
@@ -25,4 +25,4 @@ node app.js
 ```
 4. next open 'front end' folder
 5. open home.html
-6. enjoy!
+6. enjoy! 🥳🎉
