@@ -14,8 +14,11 @@ has a REST API to manage the resources in the backend. and provide full CRUD fun
 - JQUERY
 - node.js
 - Bootstrap
-
-#How to run locally
+#
+#
+#
+#
+##How to run locally##
 -you need to have node.js installed
 -next you need to open 'back end' folder 
 -run this command to startup the server side.
