@@ -24,5 +24,5 @@ has a REST API to manage the resources in the backend. and provide full CRUD fun
 node app.js
 ```
 4. next open 'front end' folder
-5. open home.html
+5. open 'home.html' with your favorite browser
 6. enjoy! 🥳🎉
