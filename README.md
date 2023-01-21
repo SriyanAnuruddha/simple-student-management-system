@@ -1,11 +1,16 @@
 # simple-student-management-system
 
 This web-based Student Management System, which automates all the manual aspects of the conventional way of 
-managing student records. Its friendly WEB UI allow users to handle
-students in a convenient, efficient, and simplified manner. The system
-has a REST API to manage the resources in the backend. and provide full CRUD functinality.
+managing student records.this website have simple WEB UI allow users to handle
+student details in a convenient, efficient, and simplified manner. The system
+has a REST API to manage the resources in the backend.
 
 ***
+### Available Functionalities ###
+- add student details
+- remove student details 
+- update student details
+- search for specific student deails
 
 ### Tech Stack ###
 - HTML
